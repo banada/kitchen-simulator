@@ -1,5 +1,5 @@
 struct Food {
-    Name *name;
+    struct Name *name;
     int amt_in_grams;
 };
 

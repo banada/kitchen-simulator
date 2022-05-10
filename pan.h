@@ -1,31 +1,39 @@
 #include "food.h"
 
 struct Pan {
-    PanSize size;
-    Food *contents;
-    PanState state;
+    int size;
+    int state;
+    struct Food *contents;
 };
 
 enum PanSize {
-    SMALL = 0,
-    MEDIUM,
-    LARGE
+    PAN_SMALL = 0,
+    PAN_MEDIUM,
+    PAN_LARGE
 };
 
 enum PanState {
-    UP = 0,
-    DOWN
+    PAN_UP = 0,
+    PAN_DOWN
 };
 
-struct Pan *pan create_pan(pan_size);
+/*
+ *  Initialize a Pan of a certain size
+ */
+struct Pan* init_pan(enum PanSize pan_size);
 
-int add_to_pan(struct Pan *pan, struct Food *contents);
+/**
+ *  Deinitialize a Pan
+ */
+int clean_pan(struct Pan *pan);
 
-int remove_from_pan(struct Pan *pan, struct Food *contents);
+//int add_to_pan(struct Pan *pan, struct Food *contents);
 
-int pick_up_pan(struct Pan *pan);
+//int remove_from_pan(struct Pan *pan, struct Food *contents);
 
-int flip(struct Pan *pan);
+//int pick_up_pan(struct Pan *pan);
 
-int set_down_pan(struct Pan *pan);
+//int flip(struct Pan *pan);
+
+//int set_down_pan(struct Pan *pan);
 

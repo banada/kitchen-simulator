@@ -18,7 +18,8 @@ omelette: libkitchen
 
 libkitchen: kitchen.c
 	$(CC) -o $(LIBDIR)/$(LIBKITCHEN)/kitchen.o -c kitchen.c
-	ar -cvq $(LIBDIR)/$(LIBKITCHEN)/libkitchen.a $(LIBDIR)/$(LIBKITCHEN)/kitchen.o
+	$(CC) -o $(LIBDIR)/$(LIBKITCHEN)/pan.o -c pan.c
+	ar -cvq $(LIBDIR)/$(LIBKITCHEN)/libkitchen.a $(LIBDIR)/$(LIBKITCHEN)/kitchen.o $(LIBDIR)/$(LIBKITCHEN)/pan.o
 
 clean:
 	rm -rf $(LIBDIR)

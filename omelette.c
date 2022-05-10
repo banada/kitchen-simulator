@@ -1,13 +1,25 @@
 #include <stdio.h>
 #include "omelette.h"
 #include "kitchen.h"
+#include "pan.h"
 
 int main(int argc, char *argv[]) {
-    int is_cabinet_open;
+    int ret;
+    struct Pan *pan = NULL;
     
-    printf("%d\n", START_MSG);
     printf("Starting to make an omelette.\n");
-    is_cabinet_open = open_cabinet();
-    printf("%d\n", is_cabinet_open);
-    return 0;
+
+    pan = init_pan(PAN_SMALL);
+    if (!pan) {
+        return -1;
+    }
+
+    ret = open_cabinet();
+
+    printf("Cleaning up.\n");
+    ret = clean_pan(pan);
+
+    printf("Done.\n");
+
+    return ret;
 }
