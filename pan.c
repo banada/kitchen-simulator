@@ -8,6 +8,10 @@ const char *PanSizeStr[] = {
     "large"
 };
 
+/**
+ *  Create a pan
+ *  Returns a pointer to a Pan
+ */
 struct Pan* init_pan(enum PanSize pan_size) {
     // Allocate memory for the pan
     struct Pan *pan = malloc(sizeof *pan);
