@@ -25,7 +25,7 @@ struct Pan* init_pan(enum PanSize pan_size);
 /**
  *  Deinitialize a Pan
  */
-int clean_pan(struct Pan *pan);
+int pan_clean(struct Pan *pan);
 
 //int add_to_pan(struct Pan *pan, struct Food *contents);
 

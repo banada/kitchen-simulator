@@ -20,6 +20,11 @@ enum BurnerState {
 
 struct Stove* stove_init(int type, int burner_count);
 
+/**
+ * Deallocate the stove
+ */
+int stove_clean(struct Stove *stove);
+
 //int stove_ignite(int burner);
 
 //int stove_turn_off(int burner);

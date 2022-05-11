@@ -23,7 +23,7 @@ struct Pan* init_pan(enum PanSize pan_size) {
     return pan;
 }
 
-int clean_pan(struct Pan *pan) {
+int pan_clean(struct Pan *pan) {
     // Deallocate the pan
     free(pan);
 

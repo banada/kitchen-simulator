@@ -43,3 +43,9 @@ struct Stove* stove_init(int type, int burner_count) {
 
     return stove;
 }
+
+int stove_clean(struct Stove *stove) {
+    free(stove);
+
+    return 0;
+}

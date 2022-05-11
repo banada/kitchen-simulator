@@ -11,6 +11,7 @@ int main(int argc, char *argv[]) {
     struct Pan *pan = NULL;
     struct Stove *stove = NULL;
     
+    printf("\n");
     printf("Starting to make an omelette.\n");
 
     stove = stove_init(STOVE_GAS, BURNER_COUNT);
@@ -26,9 +27,10 @@ int main(int argc, char *argv[]) {
     ret = open_cabinet();
 
     printf("Cleaning up.\n");
-    ret = clean_pan(pan);
+    ret = pan_clean(pan);
+    ret = stove_clean(stove);
 
-    printf("Done.\n");
+    printf("Done.\n\n");
 
     return ret;
 }
