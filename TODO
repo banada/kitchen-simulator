@@ -1,3 +1,12 @@
 - Verify malloc() and free() with valgrind
 
+- Compare memory of kitchen objects vs total program memory
+
 - Master this: https://stackoverflow.com/a/15397992
+
+- Create daemons
+
+- stoved, cabinetd, fridged, dishwasherd
+
+- Talk to each other with IPC
+

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "omelette.h"
-#include "kitchen.h"
 #include "pan.h"
 #include "stove.h"
 
@@ -23,8 +22,6 @@ int main(int argc, char *argv[]) {
     if (!pan) {
         return -1;
     }
-
-    ret = open_cabinet();
 
     printf("Cleaning up.\n");
     ret = pan_clean(pan);
