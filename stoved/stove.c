@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <signal.h>
 #include "stove.h"
 
 const char *StoveTypeStr[] = {
@@ -49,40 +48,5 @@ int stove_clean(struct Stove *stove) {
     free(stove);
 
     return 0;
-}
-
-static void handle_sigterm() {
-    printf("\nReceived SIGTERM, terminating.\n");
-    exit(0);
-}
-
-static void handle_sigint() {
-    printf("\nReceived SIGINT, exiting.\n");
-    exit(0);
-}
-
-int main(void) {
-    stove_init(STOVE_GAS, 5);
-    // stoved starts with no stoves, you need to configure
-    // your own kitchen. A kitchen can have many stoves.
-    // TODO register stoves with stoved
-
-    // System signal handlers
-    struct sigaction sigterm, sigint;
-    // SIGTERM
-    sigterm.sa_flags = 0;
-    // Signals to be blocked during handler exec
-    sigemptyset(&sigterm.sa_mask);
-    sigterm.sa_handler = handle_sigterm;
-    sigaction(SIGTERM, &sigterm, NULL);
-    // SIGINT
-    sigint.sa_flags = 0;
-    sigemptyset(&sigint.sa_mask);
-    sigint.sa_handler = handle_sigint;
-    sigaction(SIGINT, &sigint, NULL);
-
-    while(1) {
-
-    }
 }
 

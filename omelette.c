@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "omelette.h"
 #include "pan.h"
-#include "stove.h"
+#include "stoved/stove.h"
 
 #define BURNER_COUNT 4
 
