@@ -1,4 +1,4 @@
-# kitchen-simulator
+# Kitchen Simulator
 
 A place to break a few eggs.
 
@@ -21,7 +21,10 @@ make
 
 libkitchensink can be used to write programs where you simulate making food.
 
-TODO tree chart
+libkitchensink
+├── stove
+├── pan
+└── fridge
 
 ## Daemons
 

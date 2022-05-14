@@ -8,6 +8,8 @@
 
 - stoved, cabinetd, fridged, dishwasherd
 
-- Talk to each other with IPC
+- Talk to each other with IPC (raw & DBus)
 
 - systemd service file for stoved
+
+- Resize array of fridge contents

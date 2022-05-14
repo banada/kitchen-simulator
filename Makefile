@@ -7,7 +7,7 @@ LIBKITCHENSINK=libkitchensink
 BINDIR=$(PWD)/bin
 
 
-all: setup omelette stove
+all: setup omelette stove fridge
 
 setup:
 	mkdir -p $(LIBDIR)/$(LIBKITCHENSINK)
@@ -19,10 +19,14 @@ omelette: libkitchensink
 libkitchensink:
 	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/pan.o -c pan.c
 	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o -c stoved/stove.c
-	ar -cvq $(LIBDIR)/$(LIBKITCHENSINK)/libkitchensink.a $(LIBDIR)/$(LIBKITCHENSINK)/pan.o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o
+	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/fridge.o -c fridged/fridge.c
+	ar -cvq $(LIBDIR)/$(LIBKITCHENSINK)/libkitchensink.a $(LIBDIR)/$(LIBKITCHENSINK)/pan.o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o $(LIBDIR)/$(LIBKITCHENSINK)/fridge.o
 
 stove:
 	$(CC) $(CFLAGS) -o $(BINDIR)/stoved stoved/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink
+
+fridge:
+	$(CC) $(CFLAGS) -o $(BINDIR)/fridged fridged/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink
 
 clean:
 	rm -rf $(LIBDIR)

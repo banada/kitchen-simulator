@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
-#include "stove.h"
+#include "fridge.h"
 
 static void handle_sigterm(int signal) {
     printf("\nReceived SIGTERM, terminating.\n");
@@ -41,13 +41,7 @@ static int setup_signal_handlers(void) {
 }
 
 int main(void) {
-    printf("Starting stoved..\n");
-
-    // stoved starts with no stoves, you need to configure
-    // your own kitchen. A kitchen can have many stoves.
-
-    // TODO register stoves with stoved
-
+    printf("Starting fridged..\n");
     int sig = setup_signal_handlers();
     if (sig < 0) {
         printf("Failed to set up signal handlers.\n");
