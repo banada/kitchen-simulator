@@ -32,6 +32,8 @@ libkitchensink
 
 kitchen-simulator daemons use the [sd-bus D-Bus API](https://0pointer.net/blog/the-new-sd-bus-api-of-systemd.html) for IPC.
 
+| daemon | description|
+| ------- | --------- |
 | stoved | |
 | fridged | |
 
