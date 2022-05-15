@@ -69,6 +69,17 @@ static int stove_input_food(sd_bus_message *m, void *userdata, sd_bus_error *ret
 
     printf("stoved InputFood: mass %d\n", mass);
 
+    printf("Sending a message to fridged\n");
+    // Get bus that the messsage came from
+    sd_bus *bus = sd_bus_message_get_bus(m);
+    // Send message to fridged
+    ret = sd_bus_call_method(bus,
+                            "com.kitchensink.fridged",
+                            "/com/kitchensink/fridged",
+                            "com.kitchensink.fridged",
+                            "InputFood",
+                            NULL, NULL, "x", mass);
+
     return 0;
 }
 
