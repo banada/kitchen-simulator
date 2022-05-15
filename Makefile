@@ -23,10 +23,10 @@ libkitchensink:
 	ar -cvq $(LIBDIR)/$(LIBKITCHENSINK)/libkitchensink.a $(LIBDIR)/$(LIBKITCHENSINK)/pan.o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o $(LIBDIR)/$(LIBKITCHENSINK)/fridge.o
 
 stove:
-	$(CC) $(CFLAGS) -o $(BINDIR)/stoved stoved/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink
+	$(CC) $(CFLAGS) -o $(BINDIR)/stoved stoved/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink -lsystemd
 
 fridge:
-	$(CC) $(CFLAGS) -o $(BINDIR)/fridged fridged/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink
+	$(CC) $(CFLAGS) -o $(BINDIR)/fridged fridged/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink -lsystemd
 
 clean:
 	rm -rf $(LIBDIR)

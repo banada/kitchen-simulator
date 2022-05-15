@@ -4,12 +4,18 @@
 
 - Master this: https://stackoverflow.com/a/15397992
 
-- Create daemons
-
 - stoved, cabinetd, fridged, dishwasherd
 
 - Talk to each other with IPC (raw & DBus)
 
-- systemd service file for stoved
+- systemd service files for daemons
 
 - Resize array of fridge contents
+
+- C++ bindings
+
+- Qt UI
+
+- Python bindings
+
+- Auto-generate docs

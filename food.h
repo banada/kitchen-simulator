@@ -7,6 +7,10 @@ struct Food {
 };
 
 struct Name {
+    /**
+     *  Unique human-readable name
+     *  TODO register foods?
+     */
     char *name;
     int count;
 };
