@@ -21,12 +21,17 @@ make
 
 libkitchensink can be used to write programs where you simulate making food.
 
+```
 libkitchensink
 ├── stove
 ├── pan
 └── fridge
+```
 
 ## Daemons
 
-TODO stoved, etc.
+kitchen-simulator daemons use the [sd-bus D-Bus API](https://0pointer.net/blog/the-new-sd-bus-api-of-systemd.html) for IPC.
+
+| stoved | |
+| fridged | |
 
