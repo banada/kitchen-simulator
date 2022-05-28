@@ -48,6 +48,30 @@ static int setup_signal_handlers(void) {
  *  (sd_bus_message_handler_t)
  *  TODO char *name[], int mass
  */
+static int fridge_receive_msg(sd_bus_message *m, void *userdata, sd_bus_error *ret_error) {
+
+    int ret;
+    char *msg;
+
+    /* Parse message */
+    ret = sd_bus_message_read(m, "s", &msg);
+    if (ret < 0) {
+        printf("Failed to parse params from message to fridge_receive_msg.\n");
+        return -1;
+    }
+
+    /* Send response */
+    ret = sd_bus_reply_method_return(m, "s", "fridged received message.");
+    if (ret < 0) {
+        printf("Failed to send response from fridge_receive_msg.\n");
+        return -1;
+    }
+
+    printf("fridged received message: \"%s\"\n", msg);
+
+    return 0;
+}
+
 static int fridge_input_food(sd_bus_message *m, void *userdata, sd_bus_error *ret_error) {
 
     int ret;
@@ -106,6 +130,7 @@ static const sd_bus_vtable fridge_vtable[] = {
      */
     SD_BUS_METHOD("InputFood", "x", "s", fridge_input_food, SD_BUS_VTABLE_UNPRIVILEGED),
     SD_BUS_METHOD("OutputFood", "x", "s", fridge_output_food, SD_BUS_VTABLE_UNPRIVILEGED),
+    SD_BUS_METHOD("ReceiveMsg", "s", "s", fridge_receive_msg, SD_BUS_VTABLE_UNPRIVILEGED),
     SD_BUS_VTABLE_END
 };
 

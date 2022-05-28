@@ -19,3 +19,9 @@
 - Python bindings
 
 - Auto-generate docs
+
+- Output logs
+
+- autoconf
+
+- Use typedef for structs

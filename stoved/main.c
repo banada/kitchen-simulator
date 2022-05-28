@@ -77,8 +77,8 @@ static int stove_input_food(sd_bus_message *m, void *userdata, sd_bus_error *ret
                             "com.kitchensink.fridged",
                             "/com/kitchensink/fridged",
                             "com.kitchensink.fridged",
-                            "InputFood",
-                            NULL, NULL, "x", mass);
+                            "SendMsg",
+                            NULL, NULL, "s", "Hello, fridged!");
     if (ret < 0) {
         printf("Failed to send message from stoved to fridged.\n");
         return -1;
