@@ -64,6 +64,11 @@ int main(int argc, char *argv[]) {
     printf("Filling fridge.\n");
     ret = fill_fridge(fridge);
 
+    printf("Removing Steak from fridge.\n");
+    ret = fridge_remove(fridge, "Steak");
+
+    ret = fridge_list(fridge);
+
     printf("Cleaning up.\n");
     ret = pan_clean(pan);
     ret = stove_clean(stove);

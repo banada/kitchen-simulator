@@ -24,7 +24,10 @@ int fridge_clean(Fridge *fridge);
 
 int fridge_add(Fridge *fridge, Food *food);
 
-int fridge_print_contents(Fridge *fridge);
+int fridge_remove(Fridge *fridge, char *food_name);
 
-int fridge_remove(Fridge *fridge, Food *food);
+int fridge_list(Fridge *fridge);
+
+int fridge_find(Fridge *fridge);
+
 
