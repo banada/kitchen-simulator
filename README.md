@@ -6,7 +6,7 @@ A place to break a few eggs.
 
 On Ubuntu:
 ```
-sudo apt-get install build-essential
+sudo apt-get install build-essential libsystemd-dev
 ```
 
 ## Build

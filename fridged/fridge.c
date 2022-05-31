@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "fridge.h"
 
 Fridge* fridge_init(int size) {
@@ -39,7 +40,8 @@ int fridge_add(Fridge *fridge, Food *food) {
 }
 
 // Traverse the linked list and remove a food by name
-int fridge_remove(Fridge *fridge, char *food_name) {
+// Returns a pointer to the removed food
+Food* fridge_remove(Fridge *fridge, char *food_name) {
 
     FoodNode *prev = NULL;
     FoodNode *current = fridge->food_node;
@@ -51,8 +53,12 @@ int fridge_remove(Fridge *fridge, char *food_name) {
         if (current->food->name == food_name) {
             printf("Found %s in the fridge, removing\n", food_name);
             prev->next = current->next;
+
+            Food *removed = current->food;
+            current->food = NULL;
             free(current);
-            return 0;
+
+            return removed;
         }
 
         prev = current;
@@ -60,24 +66,51 @@ int fridge_remove(Fridge *fridge, char *food_name) {
     }
 
     // Failed to find
-    return -1;
+    return NULL;
 }
 
-int fridge_list(Fridge *fridge) {
+int fridge_print_food(Food *food) {
+
+    printf("Name:               %s\n", food->name);
+    printf("Safe Internal Temp: %f\n", food->safe_internal_temp);
+    printf("Amount (grams):     %f\n", food->amt_in_grams);
+    printf("Count:              %d\n", food->count);
+    printf("Temp:               %f\n", food->temp);
+    printf("================================\n");
+    printf("\n");
+
+    return 0;
+}
+
+int fridge_print_contents(Fridge *fridge) {
     FoodNode *tmp = fridge->food_node;
 
     printf("\n");
     while (tmp != NULL) {
-        printf("Name:               %s\n", tmp->food->name);
-        printf("Safe Internal Temp: %f\n", tmp->food->safe_internal_temp);
-        printf("Amount (grams):     %f\n", tmp->food->amt_in_grams);
-        printf("Count:              %d\n", tmp->food->count);
-        printf("Temp:               %f\n", tmp->food->temp);
-        printf("================================\n");
-        printf("\n");
+        int ret = fridge_print_food(tmp->food);
+        if (ret < 0) {
+            return ret;
+        }
 
         tmp = tmp->next;
     }
 
     return 0;
 }
+
+// Check if a food exists in the fridge
+bool fridge_find(Fridge *fridge, char *food_name) {
+    FoodNode *tmp = fridge->food_node;
+
+    while (tmp != NULL) {
+        if (tmp->food->name == food_name) {
+            printf("Found %s\n", food_name);
+            return true;
+        }
+
+        tmp = tmp->next;
+    }
+
+    return false;
+}
+

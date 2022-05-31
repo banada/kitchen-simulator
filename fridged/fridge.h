@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "../food.h"
 
 // Linked list node containing Food
@@ -24,10 +25,10 @@ int fridge_clean(Fridge *fridge);
 
 int fridge_add(Fridge *fridge, Food *food);
 
-int fridge_remove(Fridge *fridge, char *food_name);
+Food* fridge_remove(Fridge *fridge, char *food_name);
 
-int fridge_list(Fridge *fridge);
+int fridge_print_food(Food *food);
 
-int fridge_find(Fridge *fridge);
+int fridge_print_contents(Fridge *fridge);
 
-
+bool fridge_find(Fridge *fridge, char *food_name);

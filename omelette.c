@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include "omelette.h"
 #include "pan.h"
 #include "stoved/stove.h"
@@ -65,9 +66,20 @@ int main(int argc, char *argv[]) {
     ret = fill_fridge(fridge);
 
     printf("Removing Steak from fridge.\n");
-    ret = fridge_remove(fridge, "Steak");
+    Food *steak = fridge_remove(fridge, "Steak");
+    printf("Removed %s\n", steak->name);
 
-    ret = fridge_list(fridge);
+    ret = fridge_print_contents(fridge);
+
+    bool has_steak = fridge_find(fridge, "Steak");
+    printf("Does fridge contain Steak?: %s\n",
+           has_steak ? "true" : "false");
+    bool has_eggs = fridge_find(fridge, "Egg");
+    printf("Does fridge contain Eggs?: %s\n",
+           has_eggs ? "true" : "false");
+    bool has_pineapple = fridge_find(fridge, "Pineapple");
+    printf("Does fridge contain Pineapple?: %s\n",
+           has_pineapple ? "true" : "false");
 
     printf("Cleaning up.\n");
     ret = pan_clean(pan);
