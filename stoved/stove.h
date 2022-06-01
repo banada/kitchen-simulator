@@ -1,34 +1,36 @@
-struct Stove {
-    int type;
-    int burner_count;
-    struct Burner *(*burners)[];
-};
-
-struct Burner {
-    int state;
-};
-
 enum StoveType {
     STOVE_ELECTRIC = 0,
     STOVE_GAS
-};
+}; typedef enum StoveType StoveType;
 
 enum BurnerState {
     BURNER_OFF = 0,
     BURNER_ON
-};
+}; typedef enum BurnerState BurnerState;
 
-struct Stove* stove_init(int type, int burner_count);
+typedef struct Stove {
+    StoveType type;
+    int burner_count;
+    struct Burner *(*burners)[];
+} Stove;
+
+typedef struct Burner {
+    BurnerState state;
+    size_t level;
+} Burner;
+
+#define BURNER_MAX_HEAT_LEVEL 10
+
+Stove* stove_init(int type, int burner_count);
 
 /**
  * Deallocate the stove
  */
-int stove_clean(struct Stove *stove);
+int stove_clean(Stove *stove);
 
-//int stove_ignite(int burner);
+int stove_ignite(Burner *burner);
 
-//int stove_turn_off(int burner);
+int stove_off(Burner *burner);
 
-// TODO set MAX_HEAT_LEVEL
-//int stove_adjust_heat(int burner, int heat_level);
+int stove_adjust_heat(Burner *burner, size_t heat_level);
 

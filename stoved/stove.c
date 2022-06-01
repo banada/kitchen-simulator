@@ -32,7 +32,7 @@ struct Stove* stove_init(int type, int burner_count) {
 
     printf("Created a %d burner %s stove\n",
            stove->burner_count,
-	   StoveTypeStr[stove->type]);
+           StoveTypeStr[stove->type]);
 
     for (int i=0; i<stove->burner_count; i++) {
         int state = (*stove->burners)[i]->state;
@@ -46,6 +46,35 @@ struct Stove* stove_init(int type, int burner_count) {
 
 int stove_clean(struct Stove *stove) {
     free(stove);
+
+    return 0;
+}
+
+/**
+ *  Start the burner and set to mid
+ */
+int stove_ignite(Burner *burner) {
+    burner->state = BURNER_ON;
+    burner->level = 5;
+
+    return 0;
+}
+
+int stove_off(Burner *burner) {
+    burner->level = 0;
+    burner->state = BURNER_OFF;
+
+    return 0;
+}
+
+int stove_adjust_heat(Burner *burner, size_t heat_level) {
+    if (heat_level > BURNER_MAX_HEAT_LEVEL) {
+        printf("Invalid heat level\n");
+
+        return -1;
+    }
+
+    burner->level = heat_level;
 
     return 0;
 }

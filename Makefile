@@ -7,7 +7,7 @@ LIBKITCHENSINK=libkitchensink
 BINDIR=$(PWD)/bin
 
 
-all: setup omelette stove fridge
+all: setup omelette stove fridge test
 
 setup:
 	mkdir -p $(LIBDIR)/$(LIBKITCHENSINK)
@@ -28,6 +28,9 @@ stove:
 
 fridge:
 	$(CC) $(CFLAGS) -o $(BINDIR)/fridged fridged/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink -lsystemd
+
+test:
+	$(CC) $(CFLAGS) -o $(BINDIR)/test-stove tests/test-stove.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink
 
 clean:
 	rm -rf $(LIBDIR)
