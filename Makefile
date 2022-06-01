@@ -18,9 +18,10 @@ omelette: libkitchensink
 
 libkitchensink:
 	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/pan.o -c pan.c
+	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/food.o -c food.c
 	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o -c stoved/stove.c
 	$(CC) -o $(LIBDIR)/$(LIBKITCHENSINK)/fridge.o -c fridged/fridge.c
-	ar -cvq $(LIBDIR)/$(LIBKITCHENSINK)/libkitchensink.a $(LIBDIR)/$(LIBKITCHENSINK)/pan.o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o $(LIBDIR)/$(LIBKITCHENSINK)/fridge.o
+	ar -cvq $(LIBDIR)/$(LIBKITCHENSINK)/libkitchensink.a $(LIBDIR)/$(LIBKITCHENSINK)/pan.o $(LIBDIR)/$(LIBKITCHENSINK)/food.o $(LIBDIR)/$(LIBKITCHENSINK)/stove.o $(LIBDIR)/$(LIBKITCHENSINK)/fridge.o
 
 stove:
 	$(CC) $(CFLAGS) -o $(BINDIR)/stoved stoved/main.c -L$(LIBDIR)/$(LIBKITCHENSINK) -lkitchensink -lsystemd

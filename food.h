@@ -13,4 +13,9 @@ typedef struct Food {
     float temp;
 } Food;
 
+/**
+ *  Print a single food object
+ */
+int food_print(Food *food);
+
 #endif /* HEADER_FOOD_SEEN */

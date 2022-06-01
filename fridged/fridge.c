@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "fridge.h"
+#include "../food.h"
 
 Fridge* fridge_init(int size) {
 
@@ -69,25 +70,12 @@ Food* fridge_remove(Fridge *fridge, char *food_name) {
     return NULL;
 }
 
-int fridge_print_food(Food *food) {
-
-    printf("Name:               %s\n", food->name);
-    printf("Safe Internal Temp: %f\n", food->safe_internal_temp);
-    printf("Amount (grams):     %f\n", food->amt_in_grams);
-    printf("Count:              %d\n", food->count);
-    printf("Temp:               %f\n", food->temp);
-    printf("================================\n");
-    printf("\n");
-
-    return 0;
-}
-
 int fridge_print_contents(Fridge *fridge) {
     FoodNode *tmp = fridge->food_node;
 
     printf("\n");
     while (tmp != NULL) {
-        int ret = fridge_print_food(tmp->food);
+        int ret = food_print(tmp->food);
         if (ret < 0) {
             return ret;
         }

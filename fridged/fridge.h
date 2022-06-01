@@ -19,15 +19,19 @@ typedef struct Fridge {
 Fridge* fridge_init(int size);
 
 /**
- * Deallocate the fridge
+ *  Deallocate the fridge
  */
 int fridge_clean(Fridge *fridge);
 
+/**
+ *  Add food to the fridge
+ */
 int fridge_add(Fridge *fridge, Food *food);
 
+/**
+ *  Remove food from the fridge
+ */
 Food* fridge_remove(Fridge *fridge, char *food_name);
-
-int fridge_print_food(Food *food);
 
 int fridge_print_contents(Fridge *fridge);
 
